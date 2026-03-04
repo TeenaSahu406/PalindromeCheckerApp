@@ -1,39 +1,23 @@
-import java.util.Scanner;
-
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        // Hardcoded string literal
+        String word = "madam";
 
-        System.out.println("Enter a string to check if it is a palindrome:");
-        String input = scanner.nextLine();
+        // Variable to store reversed string
+        String reversed = "";
 
-        boolean isPalindrome = checkPalindrome(input, 0, input.length() - 1);
+        // Reverse the string using loop
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
 
-        if (isPalindrome) {
-            System.out.println("Result: The given string is a Palindrome.");
+        // Check palindrome using if-else
+        if (word.equals(reversed)) {
+            System.out.println(word + " is a Palindrome.");
         } else {
-            System.out.println("Result: The given string is NOT a Palindrome.");
+            System.out.println(word + " is NOT a Palindrome.");
         }
-
-        scanner.close();
-    }
-
-    // Recursive method
-    public static boolean checkPalindrome(String str, int start, int end) {
-
-        // Base condition: if pointers cross or meet
-        if (start >= end) {
-            return true;
-        }
-
-        // If characters don't match
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call for inner substring
-        return checkPalindrome(str, start + 1, end - 1);
     }
 }
